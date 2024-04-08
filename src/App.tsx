@@ -1,5 +1,3 @@
-import React, { Children } from 'react'
-
 import './scss/app.scss'
 
 import { Routes, Route } from 'react-router-dom'

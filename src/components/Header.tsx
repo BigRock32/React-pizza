@@ -9,7 +9,7 @@ function Header() {
    const { items, totalPrice } = useSelector(selectCart)
    const location = useLocation()
 
-   const itemsCount = items.reduce((current, obj) => current + obj.count, 0)
+   const itemsCount = items.reduce((current: number, obj: any) => current + obj.count, 0)
 
    return (
       <div className="header">

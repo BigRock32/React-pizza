@@ -7,14 +7,13 @@ import PizzaBlock from '../components/PizzaBlock';
 import Skeleton from '../components/PizzaBlock/Skeleton';
 import Pagination from '../components/Pagination';
 import NotFound from './NotFound';
-import { SearchContext } from '../App';
 
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import { selectFilter, setFilters } from '../redux/slices/filterSlice';
 import { fetchPizzas, selectPizzaData } from '../redux/slices/pizzaSlice';
 
-function Home() {
+const Home: React.FC = () => {
    const navigate = useNavigate()
    const dispatch = useDispatch()
    const isSearch = React.useRef(false)
@@ -29,13 +28,15 @@ function Home() {
       const category = categoryId > 0 ? `&category=${categoryId}` : ''
       const search = searchValue ? `&search=${searchValue}` : ''
 
-      dispatch(fetchPizzas({
-         sortBy,
-         dir,
-         category,
-         search,
-         currentPage
-      }))
+      dispatch(
+         // @ts-ignore
+         fetchPizzas({
+            sortBy,
+            dir,
+            category,
+            search,
+            currentPage
+         }))
    }
 
    // Если изменили параметры и был первый рендер
@@ -78,7 +79,7 @@ function Home() {
    }, [categoryId, sort, searchValue, currentPage])
 
 
-   const pizzas = items.map((pizza) => <PizzaBlock key={pizza.id} {...pizza} />)
+   const pizzas = items.map((pizza: any) => <PizzaBlock key={pizza.id} {...pizza} />)
    const skeletons = [...new Array(6)].map(() => <Skeleton />)
 
    return (

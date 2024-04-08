@@ -6,10 +6,10 @@ import CarItem from '../components/CarItem'
 import CartEmpty from '../components/CartEmpty'
 
 
-function Cart() {
+const Cart: React.FC = () => {
    const dispatch = useDispatch()
    const { items, totalPrice } = useSelector(selectCart)
-   const itemsCount = items.reduce((current, obj) => current + obj.count, 0)
+   const itemsCount = items.reduce((current: number, obj: any) => current + obj.count, 0)
 
    const clearCart = () => {
       if (window.confirm('Очистить корзину?')) {
@@ -43,7 +43,7 @@ function Cart() {
             </div>}
          </div>
          <div className="content__items">
-            {items.map((item) => {
+            {items.map((item: any) => {
                return <CarItem key={item.id} {...item} />
             })}
          </div>

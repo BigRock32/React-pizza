@@ -9,13 +9,15 @@ const pizzaTypes = [
    'традиционное'
 ]
 
-function PizzaBlock({ id, title, price, imageUrl, sizes, types }) {
+type PizzaBlockProps = { id: string, title: string, price: number, imageUrl: string, sizes: number[], types: number[] }
+
+const PizzaBlock: React.FC<PizzaBlockProps> = ({ id, title, price, imageUrl, sizes, types }) => {
    const dispatch = useDispatch()
    const [activeTypeIndex, setActiveTypeIndex] = React.useState(0)
    const [activeSizeIndex, setActiveSizeIndex] = React.useState(0)
    const cartItems = useSelector(selectCartItemById(id))
 
-   const addedCount = cartItems.reduce((sum, item) => sum + item.count, 0)
+   const addedCount = cartItems.reduce((sum: number, item: any) => sum + item.count, 0)
 
    const onClickAdd = () => {
       const item = {

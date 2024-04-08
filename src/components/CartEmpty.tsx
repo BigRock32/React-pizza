@@ -2,7 +2,7 @@ import React from 'react'
 
 import emptyImg from '../assets/img/empty-cart.png'
 
-const CartEmpty = () => {
+const CartEmpty: React.FC = () => {
    return (
       <>
          <div className="cart cart--empty">
